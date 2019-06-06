@@ -56,14 +56,8 @@ class Graham {
  //checks whether clockwise, countercw, or colinear between 3 points
  int orientation(Point p1, Point p2, Point p3){
    // http://stackoverflow.com/questions/27635188/algorithm-to-detect-left-or-right-turn-from-x-y-co-ordinates
-   int val = (p2.y - p1.y) * (p3.x - p2.x) - 
+   return  (p2.y - p1.y) * (p3.x - p2.x) - 
              (p2.x - p1.x) * (p3.y - p2.y);
-             
-   if(val == 0){
-     return 0; //colinear
-   }
-
-    return (val > 0)? 1: 2; // clock = 1 or counterclock wise = 2
    
  }
  //deletes any clockwise turns
@@ -73,13 +67,14 @@ class Graham {
    convexPoints.add(PointsArr[1]);
    convexPoints.add(PointsArr[2]);
    for(int i = 3;i<PointsArr.length;i++){
-     while(convexPoints.size()>1 && orientation(convexPoints.get(convexPoints.size()-2),convexPoints.get(convexPoints.size()-1),
-           PointsArr[i]) == 2){
-             convexPoints.remove(convexPoints.size()-1);
-           }
+     
+     while(convexPoints.size()>1 && orientation(convexPoints.get(convexPoints.size()-2),convexPoints.get(convexPoints.size()-1),PointsArr[i]) <=0){
+       convexPoints.remove(convexPoints.size()-1);
+       
+     }
      convexPoints.add(PointsArr[i]);
-   }
-   
+   }           
+
    return convexPoints;
    
  }

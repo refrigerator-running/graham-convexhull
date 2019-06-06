@@ -1,5 +1,5 @@
-int numPoints = 20;
-int pSize = 15;
+int numPoints = 500;
+int pSize = 7;
 int pDia = pSize/2;
 
 Point[] Points = new Point[numPoints];
@@ -33,8 +33,8 @@ void draw() {
   for (int i = 0; i < numPoints; i++) {
     arrangedPoints[i].drawSelf();
     fill(255);
-    text(i, arrangedPoints[i].x-6, arrangedPoints[i].y+6);
-    fill(0);
+    //text(i, arrangedPoints[i].x-6, arrangedPoints[i].y+6);
+    //fill(0);
   }
   for(int i = 0; i < convexPoints.size()-1; i++){
     line(convexPoints.get(i).x,convexPoints.get(i).y,convexPoints.get(i+1).x,convexPoints.get(i+1).y);
